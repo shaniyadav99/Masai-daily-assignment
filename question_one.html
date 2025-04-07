@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Table</title>
+</head>
+<body>
+
+  <h2>Dynamic User Table</h2>
+  <button class="add-btn" onclick="addRow()">Add Row</button>
+
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will go here -->
+    </tbody>
+  </table>
+
+  <script>
+    function addRow() {
+      const table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+      const row = table.insertRow();
+
+      const nameCell = row.insertCell(0);
+      const emailCell = row.insertCell(1);
+      const actionsCell = row.insertCell(2);
+
+      nameCell.innerHTML = '<input type="text" placeholder="Enter name">';
+      emailCell.innerHTML = '<input type="email" placeholder="Enter email">';
+      actionsCell.innerHTML = `
+        <button class="save-btn" onclick="saveRow(this)">Save</button>
+        <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+      `;
+    }
+
+    function saveRow(button) {
+      const row = button.parentNode.parentNode;
+      const name = row.cells[0].querySelector('input').value;
+      const email = row.cells[1].querySelector('input').value;
+
+      row.cells[0].innerText = name;
+      row.cells[1].innerText = email;
+      row.cells[2].innerHTML = `
+        <button class="edit-btn" onclick="editRow(this)">Edit</button>
+        <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+      `;
+    }
+
+    function editRow(button) {
+      const row = button.parentNode.parentNode;
+      const name = row.cells[0].innerText;
+      const email = row.cells[1].innerText;
+
+      row.cells[0].innerHTML = `<input type="text" value="${name}">`;
+      row.cells[1].innerHTML = `<input type="email" value="${email}">`;
+      row.cells[2].innerHTML = `
+        <button class="save-btn" onclick="saveRow(this)">Save</button>
+        <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+      `;
+    }
+
+    function deleteRow(button) {
+      const row = button.parentNode.parentNode;
+      row.remove();
+    }
+  </script>
+
+</body>
+</html>

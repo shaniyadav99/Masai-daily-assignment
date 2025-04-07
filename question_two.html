@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    async function video() {
+        try {
+            const response = await fetch('https://api.pexels.com/v1/photos/popular', {
+                headers: {
+                    Authorization: 'JQN3tBuvpCFbMbzKcK1hc0oX0uSCjwz074oEe9niI8RHjCUMrc9CtxGg' 
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    }
+
+    video();
+</script>
