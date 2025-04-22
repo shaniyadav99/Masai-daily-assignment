@@ -4,18 +4,16 @@
     
 //     **Expected Output:** `"BANC"`
 function minimumW(s,t){
-    let temp=[],index=Infinity,ans=[];
+    t=t.split('');
+    let ans="",minLength=Infinity;
     for(let i=0;i<s.length;i++){
-        temp.push(t[i]);
-        if(temp.includes(t.split('')) && temp.length<index){
-            ans=temp;
-            index=temp.length;
-        }
-        while(temp.length>index){
-            temp.shift();
-            if(temp.includes(t.split('')) && temp.length<index){
+        let temp=[];
+        for(let j=i;j<s.length;j++){
+            temp.push(s[j]);
+            console.log(temp)
+            if(temp.includes(t) && temp.length<minLength){
                 ans=temp;
-                index=temp.length;
+                minLength=temp.length;
             }
         }
     }
