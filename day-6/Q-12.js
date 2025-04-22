@@ -8,10 +8,10 @@ function findFirstOccur(str,pattern){
     for(let i=0;i<k;i++){
         arr.push(str[i]);
     }
-    if(arr.join("")===pattern){
-        return 0;
-    }
     let index=0;
+    if(arr.join("")===pattern){
+        console.log(index);
+    }
     for(let i=k;i<str.length;i++){
         arr.shift();
         arr.push(str[i]);

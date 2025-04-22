@@ -3,3 +3,11 @@
 //     **Input:** `["flower", "flow", "flight"]`
     
 //     **Expected Output:** `"fl"`
+function longestCommon(arr){
+    for (let i = 0; i < arr.length; i++) {
+        let str=arr[i].split('');
+        console.log(str)
+    }
+}
+let nums=["flower", "flow", "flight"];
+longestCommon(nums);
