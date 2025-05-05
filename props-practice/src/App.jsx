@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import { Greeting } from './Greeting';
 import { UserProfile } from './UserProfile';
 import { LoginMessage } from './LoginMessage';
+import { UserDashboard } from './UserDashboard';
 
 function App() {
   const [name, setName] = useState("");
@@ -14,6 +15,7 @@ function App() {
       <Greeting name={name} time={time}/>
       <UserProfile/>
       <LoginMessage/>
+      <UserDashboard/>
     </>
   )
 }
